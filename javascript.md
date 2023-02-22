@@ -13,3 +13,18 @@ A JavaScript object is a multi-level 'hash map' of key/value pairs, with no clas
 
     superhero.name = 'Spider-Man';
     superhero.strength = 100
+
+### Functions Are Just Values
+
+    Functions in Javascript are just values of type `Function`.
+
+    var flyFunction = function() {
+        console.log('Crawling like a spider!');
+    };
+
+    superhero.fly = flyFunction;
+
+This creates a function (a value of type `Function`) and assigns it to a variable `flyFunction`. 
+A new property named `fly` is then created in the superhero object, that can be invoked like this:
+
+    superhero.fly();
