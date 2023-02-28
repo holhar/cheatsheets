@@ -83,3 +83,27 @@ For example:
     ironMan.__proto__ = avengersHero;
 
     console.log('Iron Man is copyrighted by ' + ironMan.editor);
+
+The output of the code snippet above will be `Iron Man is copyrighted by Marvel`.
+
+Changing `avengersHero.editor` afterwards would also change the output!
+
+### Constructors vs Constructor Functions
+
+In Javascript an attempt was made to make object creation similar to languages like Java. Let's take for example:
+
+    function SuperHero(name, strength) {
+        this.name = name;
+        this.strength = strength;
+    }
+
+Notice the capitalized name, indicating that it's a constructor function. Let's see how it can be used:
+
+    var superman = new SuperHero('Superman', 100);
+
+    console.log('Hello, my name is ' + superman.name);
+
+This code snippet outputs `Hello, my name is Superman`.
+
+You might think that this looks just like Java, and that is exactly the point! 
+What this `new` syntax really does is to it creates a new empty object, and then calls the constructor function by forcing `this` to be the newly created object.
