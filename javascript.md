@@ -107,3 +107,40 @@ This code snippet outputs `Hello, my name is Superman`.
 
 You might think that this looks just like Java, and that is exactly the point! 
 What this `new` syntax really does is to it creates a new empty object, and then calls the constructor function by forcing `this` to be the newly created object.
+
+#### Why is this syntax not recommended then?
+
+Let's say that we want to specify that all super heroes have a `sayHello` method.
+This could be done by putting the `sayHello` function in a common prototype object:
+
+    function SuperHero(name, strength) {
+        this.name = name;
+        this.strenth = strength;
+    }
+
+    SuperHero.prototype.sayHello = function() {
+        console.log('Hello, my name is ' + this.name);
+    }
+
+    var superman = new SuperHero('Superman', 100);
+    superman.sayHello();
+
+This would output 'Hello, my name is Superman'.
+
+But the syntax `SuperHero.prototype.sayHello` looks anything but Java like!
+The new operator mechanism sort of half looks like Java but at the same time is completely different.
+
+#### Is there a recommended alternative to `new`?
+
+The recommended way to go is to ignore the Javascript `new` operator altogether and use `Object.create`:
+
+    var superHeroPrototype = {
+        sayHello: function() {
+            console.log('Hello, my name is ' + this.name);
+        }
+    };
+
+    var superman = Object.create(superHeroPrototype);
+    superman.name = 'Superman';
+
+Unlike the `new` operator, one thing that Javascript absolutely got right where Closures.
